@@ -6,6 +6,7 @@ const hours = ['6am', '7am', '8am','9am','10am','11am','12pm','1pm','2pm','3pm',
 let sales = document.getElementById('sales');
 let loremIpsum = 'Captain Janeway: Who wanted to muck around in the dirt when you could be studying quantum mechanics\? Seven of Nine: "Impossible" is a word that humans use far too often. James T. Kirk: There seems to be no sign of intelligent life anywhere... Odo: You\'re still disgusting!  Quark: Wouldn\'t have it any other way! The Doctor: You should know I\'m a hologram and can\'t be bent, spindled, or mutilated, so don\'t bother trying.';
 const storeArray = [];
+let allLocationSales = 0;
 
 // *** HELPER FUNCTIONS ***
 
@@ -99,8 +100,13 @@ for (let i = 0; i < hours.length; i++){
   let hourlyTotal = 0;
     for (let j = 0; j < storeArray.length; j++) {
       hourlyTotal += storeArray[j].cookieSales[i];
+      allLocationSales += hourlyTotal;
     }
   let hourTotal = document.createElement('td');
   hourTotal.innerText = `${hourlyTotal}`;
   tableFooter.appendChild(hourTotal);
 }
+
+let totalSalesFooter = document.createElement('td');
+totalSalesFooter.innerText = `${allLocationSales}`;
+tableFooter.appendChild(totalSalesFooter);
