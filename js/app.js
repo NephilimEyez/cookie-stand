@@ -2,258 +2,105 @@
 
 // *** GLOBALS ***
 
-let hours = ['6am', '7am', '8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
+const hours = ['6am', '7am', '8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
 let sales = document.getElementById('sales');
+let loremIpsum = 'Captain Janeway: Who wanted to muck around in the dirt when you could be studying quantum mechanics\? Seven of Nine: "Impossible" is a word that humans use far too often. James T. Kirk: There seems to be no sign of intelligent life anywhere... Odo: You\'re still disgusting!  Quark: Wouldn\'t have it any other way! The Doctor: You should know I\'m a hologram and can\'t be bent, spindled, or mutilated, so don\'t bother trying.';
+const storeArray = [];
 
-let loremIpsum = ' Captain Janeway: Who wanted to muck around in the dirt when you could be studying quantum mechanics\? Seven of Nine: "Impossible" is a word that humans use far too often. James T. Kirk: There seems to be no sign of intelligent life anywhere... Odo: You\'re still disgusting!  Quark: Wouldn\'t have it any other way! The Doctor: You should know I\'m a hologram and can\'t be bent, spindled, or mutilated, so don\'t bother trying.'
+// *** HELPER FUNCTIONS ***
 
-let seattle = {
-  location: 'Seattle',
-  minCust: 23,
-  maxCust: 65,
-  avgCookie: 6.3,
-  getSales: function(max, min){
-    return Math.floor(Math.random() * (max - min + 1) + min); // taken from MDN
-  },
-  cookieSales: [],
-  render: function(){
-    let totalSales = 0;
-
-    for (let i = 0; i < hours.length; i++){
-      let placeholder = this.getSales(this.maxCust, this.minCust) * this.avgCookie;
-      this.cookieSales.push(Math.trunc(placeholder));
-    }
-    for (let i = 0; i < this.cookieSales.length; i++){
-      totalSales += this.cookieSales[i];
-    }
-    this.cookieSales.push(totalSales);
-
-    let articleElement = document.createElement('article');
-
-    sales.appendChild(articleElement);
-
-    let locationHeading = document.createElement('h2');
-    locationHeading.innerText = this.location;
-    articleElement.appendChild(locationHeading);
-
-    let description = document.createElement('p');
-    description.innerText = loremIpsum;
-    articleElement.appendChild(description);
-
-    let hourlySalesList = document.createElement('ul');
-    articleElement.appendChild(hourlySalesList);
-
-    for (let i =0; i < hours.length; i++) {
-      let liSales = document.createElement('li');
-      liSales.innerText = `${hours[i]}: ${this.cookieSales[i]} cookies`;
-      hourlySalesList.appendChild(liSales);
-    }
-
-    let allSales = document.createElement('li');
-    let allSalesPull = this.cookieSales[this.cookieSales.length -1]; // Freecode camp helped here
-    allSales.innerText = `Total Sales: ${allSalesPull}`;
-    hourlySalesList.appendChild(allSales);
-  },
+function renderAll(){
+  for(let i = 0; i < storeArray.length; i++){
+    storeArray[i].render();
+  }
 }
 
-let tokyo = {
-  location: 'Tokyo',
-  minCust: 3,
-  maxCust: 24,
-  avgCookie: 1.2,  
-  getSales: function(max, min){
-    return Math.floor(Math.random() * (max - min + 1) + min); // taken from MDN
-  },
-  cookieSales: [],
-  render: function(){
-    let totalSales = 0;
+// *** CONSTRUCTORS ***
 
-    for (let i = 0; i < hours.length; i++){
-      let placeholder = this.getSales(this.maxCust, this.minCust) * this.avgCookie;
-      this.cookieSales.push(Math.trunc(placeholder));
-    }
-    for (let i = 0; i < this.cookieSales.length; i++){
-      totalSales += this.cookieSales[i];
-    }
-    this.cookieSales.push(totalSales);
-
-    let articleElement = document.createElement('article');
-
-    sales.appendChild(articleElement);
-
-    let locationHeading = document.createElement('h2');
-    locationHeading.innerText = this.location;
-    articleElement.appendChild(locationHeading);
-
-    let description = document.createElement('p');
-    description.innerText = loremIpsum;
-    articleElement.appendChild(description);
-
-    let hourlySalesList = document.createElement('ul');
-    articleElement.appendChild(hourlySalesList);
-
-    for (let i =0; i < hours.length; i++) {
-      let liSales = document.createElement('li');
-      liSales.innerText = `${hours[i]}: ${this.cookieSales[i]} cookies`;
-      hourlySalesList.appendChild(liSales);
-    }
-
-    let allSales = document.createElement('li');
-    let allSalesPull = this.cookieSales[this.cookieSales.length -1]; // Freecode camp helped here
-    allSales.innerText = `Total Sales: ${allSalesPull}`;
-    hourlySalesList.appendChild(allSales);
-  },
+function Store(location, minCust, maxCust, avgSale){
+  this.location = location;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookie = avgSale;
+  this.cookieSales = [];
 }
 
-let dubai = {
-  location: 'Dubai',
-  minCust: 11,
-  maxCust: 38,
-  avgCookie: 3.7,
-  getSales: function(max, min){
-    return Math.floor(Math.random() * (max - min + 1) + min); // taken from MDN
-  },
-  cookieSales: [],
-  render: function(){
-    let totalSales = 0;
+// *** PROTOTYPE FUNCTIONS ***
 
-    for (let i = 0; i < hours.length; i++){
-      let placeholder = this.getSales(this.maxCust, this.minCust) * this.avgCookie;
-      this.cookieSales.push(Math.trunc(placeholder));
-    }
-    for (let i = 0; i < this.cookieSales.length; i++){
-      totalSales += this.cookieSales[i];
-    }
-    this.cookieSales.push(totalSales);
-
-    let articleElement = document.createElement('article');
-
-    sales.appendChild(articleElement);
-
-    let locationHeading = document.createElement('h2');
-    locationHeading.innerText = this.location;
-    articleElement.appendChild(locationHeading);
-
-    let description = document.createElement('p');
-    description.innerText = loremIpsum;
-    articleElement.appendChild(description);
-
-    let hourlySalesList = document.createElement('ul');
-    articleElement.appendChild(hourlySalesList);
-
-    for (let i =0; i < hours.length; i++) {
-      let liSales = document.createElement('li');
-      liSales.innerText = `${hours[i]}: ${this.cookieSales[i]} cookies`;
-      hourlySalesList.appendChild(liSales);
-    }
-
-    let allSales = document.createElement('li');
-    let allSalesPull = this.cookieSales[this.cookieSales.length -1]; // Freecode camp helped here
-    allSales.innerText = `Total Sales: ${allSalesPull}`;
-    hourlySalesList.appendChild(allSales);
-  },
+Store.prototype.getSales = function (max, min) {
+  return Math.floor(Math.random() * (max - min + 1) + min); // taken from MDN
 }
 
-let paris = {
-  location: 'Paris',
-  minCust: 20,
-  maxCust: 38,
-  avgCookie: 2.3,
-  getSales: function(max, min){
-    return Math.floor(Math.random() * (max - min + 1) + min); // taken from MDN
-  },
-  cookieSales: [],
-  render: function(){
-    let totalSales = 0;
+Store.prototype.render = function(){
+  let totalSales = 0;
 
-    for (let i = 0; i < hours.length; i++){
-      let placeholder = this.getSales(this.maxCust, this.minCust) * this.avgCookie;
-      this.cookieSales.push(Math.trunc(placeholder));
-    }
-    for (let i = 0; i < this.cookieSales.length; i++){
-      totalSales += this.cookieSales[i];
-    }
-    this.cookieSales.push(totalSales);
+  for (let i = 0; i < hours.length; i++){
+    let placeholder = this.getSales(this.maxCust, this.minCust) * this.avgCookie;
+    this.cookieSales.push(Math.ceil(placeholder));
+  }
+  for (let i = 0; i < this.cookieSales.length; i++){
+    totalSales += this.cookieSales[i];
+  }
 
-    let articleElement = document.createElement('article');
+  // let paragraph = document.createElement('p');
+  // paragraph.innerText = loremIpsum;
+  // sales.appendChild(paragraph);
 
-    sales.appendChild(articleElement);
+  let storeRow = document.createElement('tr');
+  storeRow.innerText = `${this.location}`;
+  sales.appendChild(storeRow);
 
-    let locationHeading = document.createElement('h2');
-    locationHeading.innerText = this.location;
-    articleElement.appendChild(locationHeading);
+  for (let i =0; i < hours.length; i++) {
+    let tdSales = document.createElement('td');
+    tdSales.innerText = `${this.cookieSales[i]}`;
+    storeRow.appendChild(tdSales);
+  }
 
-    let description = document.createElement('p');
-    description.innerText = loremIpsum;
-    articleElement.appendChild(description);
-
-    let hourlySalesList = document.createElement('ul');
-    articleElement.appendChild(hourlySalesList);
-
-    for (let i =0; i < hours.length; i++) {
-      let liSales = document.createElement('li');
-      liSales.innerText = `${hours[i]}: ${this.cookieSales[i]} cookies`;
-      hourlySalesList.appendChild(liSales);
-    }
-
-    let allSales = document.createElement('li');
-    let allSalesPull = this.cookieSales[this.cookieSales.length -1]; // Freecode camp helped here
-    allSales.innerText = `Total Sales: ${allSalesPull}`;
-    hourlySalesList.appendChild(allSales);
-  },
+  let allSales = document.createElement('td');
+  allSales.innerText = `${totalSales}`;
+  storeRow.appendChild(allSales);
 }
 
-let lima = {
-  location: 'Lima',
-  minCust: 2,
-  maxCust: 16,
-  avgCookie: 4.6,
-  getSales: function(max, min){
-    return Math.floor(Math.random() * (max - min + 1) + min); // taken from MDN
-  },
-  cookieSales: [],
-  render: function(){
-    let totalSales = 0;
+let tableHeading = document.createElement('tr');
+sales.appendChild(tableHeading);
 
-    for (let i = 0; i < hours.length; i++){
-      let placeholder = this.getSales(this.maxCust, this.minCust) * this.avgCookie;
-      this.cookieSales.push(Math.trunc(placeholder));
-    }
-    for (let i = 0; i < this.cookieSales.length; i++){
-      totalSales += this.cookieSales[i];
-    }
-    this.cookieSales.push(totalSales);
+let blankCell = document.createElement('td');
+tableHeading.appendChild(blankCell);
 
-    let articleElement = document.createElement('article');
-
-    sales.appendChild(articleElement);
-
-    let locationHeading = document.createElement('h2');
-    locationHeading.innerText = this.location;
-    articleElement.appendChild(locationHeading);
-
-    let description = document.createElement('p');
-    description.innerText = loremIpsum;
-    articleElement.appendChild(description);
-
-    let hourlySalesList = document.createElement('ul');
-    articleElement.appendChild(hourlySalesList);
-
-    for (let i =0; i < hours.length; i++) {
-      let liSales = document.createElement('li');
-      liSales.innerText = `${hours[i]}: ${this.cookieSales[i]} cookies`;
-      hourlySalesList.appendChild(liSales);
-    }
-
-    let allSales = document.createElement('li');
-    let allSalesPull = this.cookieSales[this.cookieSales.length -1]; // Freecode camp helped here
-    allSales.innerText = `Total Sales: ${allSalesPull}`;
-    hourlySalesList.appendChild(allSales);
-  },
+for (let i = 0; i < hours.length; i++){
+  let tableHeader = document.createElement('td');
+  tableHeader.innerText = `${hours[i]}`;
+  tableHeading.appendChild(tableHeader);
 }
 
-seattle.render();
-tokyo.render();
-dubai.render();
-paris.render();
-lima.render();
+let totalSalesCell = document.createElement('td');
+totalSalesCell.innerText = 'Daily Location Total';
+tableHeading.appendChild(totalSalesCell);
+
+
+let seattle = new Store('Seattle', 23, 65, 6.3);
+let tokyo = new Store('Tokyo', 3, 24, 1.2);
+let dubai = new Store('Dubai', 11, 38, 3.7);
+let paris = new Store('Paris', 20, 38, 2.3);
+let lima = new Store('Lima', 2, 16, 4.6);
+
+storeArray.push(seattle, tokyo, dubai, paris, lima);
+
+renderAll();
+
+let tableFooter = document.createElement('tr');
+sales.appendChild(tableFooter);
+
+let totalFooter = document.createElement('td');
+totalFooter.innerText = 'Hourly Totals';
+tableFooter.appendChild(totalFooter);
+
+for (let i = 0; i < hours.length; i++){
+  let hourlyTotal = 0;
+    for (let j = 0; j < storeArray.length; j++) {
+      hourlyTotal += storeArray[j].cookieSales[i];
+    }
+  let hourTotal = document.createElement('td');
+  hourTotal.innerText = `${hourlyTotal}`;
+  tableFooter.appendChild(hourTotal);
+}
