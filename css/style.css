@@ -1,4 +1,12 @@
 
+header {
+  background-color: lightgray;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 header nav img {
   width: 200px;
   height: 70px;
@@ -14,11 +22,9 @@ header nav ul {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 0;
+  align-items: center;
 }
 
 header nav ul li {
   padding: 10px 20px;
-  list-style-type: none;
-  list-style: none;
 }
