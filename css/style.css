@@ -28,3 +28,32 @@ header nav ul {
 header nav ul li {
   padding: 10px 20px;
 }
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0px;
+  flex-direction: column;
+}
+
+body>main>img {
+  width: 960px;
+  height: 450px;
+}
+
+div>img {
+  height: 400px;
+  width: 480px;
+  padding-right: 30px;
+}
+
+div article {
+  display: flex;
+  flex-direction: column;
+}
+
+div article p {
+  width: 450px;
+  height: 360px;
+}
