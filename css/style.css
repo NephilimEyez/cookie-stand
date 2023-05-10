@@ -1,10 +1,19 @@
 
+body {
+  background-color: antiquewhite;
+}
+
 header {
   background-color: lightgray;
   height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h2 {
+  font-size: 1.8vw;
+  font-weight: 600;
 }
 
 header nav img {
@@ -42,6 +51,22 @@ body>main>img {
   height: 450px;
 }
 
+section {
+  display: flex;
+  padding: 20px 0px;
+  width: 960px;
+  justify-content: space-between;
+}
+
+section>img {
+  width: 300px;
+  height: 375px;
+}
+
+div {
+  display: flex;
+}
+
 div>img {
   height: 400px;
   width: 480px;
@@ -56,4 +81,9 @@ div article {
 div article p {
   width: 450px;
   height: 360px;
+}
+
+footer {
+  background-color: lightgray;
+  height: 100px;
 }
