@@ -1,0 +1,107 @@
+
+body {
+  background-color: antiquewhite;
+}
+
+header {
+  background-color: lightgray;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 1.8vw;
+  font-weight: 600;
+}
+
+header nav img {
+  width: 200px;
+  height: 70px;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header nav ul li {
+  padding: 10px 20px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0px;
+  flex-direction: column;
+}
+
+body>main>img {
+  width: 960px;
+  height: 450px;
+}
+
+section {
+  display: flex;
+  padding: 20px 0px;
+  width: 960px;
+  justify-content: space-between;
+}
+
+section>img {
+  width: 300px;
+  height: 375px;
+}
+
+div {
+  display: flex;
+}
+
+div>img {
+  height: 400px;
+  width: 480px;
+  padding-right: 30px;
+}
+
+div article {
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+aside {
+  width: 450px;
+  height: 360px;
+  overflow: auto;
+}
+
+aside>ul {
+  padding: .5vw 0px;
+}
+
+footer {
+  background-color: lightgray;
+  height: 100px;
+}
+
+button:hover {
+  background-color: aquamarine;
+}
+
+button {
+  width: 200px;
+  transition: 350ms;
+}
