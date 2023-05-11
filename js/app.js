@@ -7,6 +7,7 @@ let sales = document.getElementById('sales');
 let loremIpsum = 'Captain Janeway: Who wanted to muck around in the dirt when you could be studying quantum mechanics\? Seven of Nine: "Impossible" is a word that humans use far too often. James T. Kirk: There seems to be no sign of intelligent life anywhere... Odo: You\'re still disgusting!  Quark: Wouldn\'t have it any other way! The Doctor: You should know I\'m a hologram and can\'t be bent, spindled, or mutilated, so don\'t bother trying.';
 const storeArray = [];
 let allLocationSales = 0;
+let locationForm = document.getElementById('newLocation');
 
 // *** HELPER FUNCTIONS ***
 
@@ -15,6 +16,27 @@ function renderAll(){
     storeArray[i].render();
   }
 }
+
+// *** FORM SUBMISSION EVENT LISTENER ***
+
+function handleSubmit(event){
+  event.preventDefault();
+  let locationName = event.target.locationName.value;
+  let formMin = Number(event.target.minCust.value);
+  let formMax = Number(event.target.maxCust.value);
+  let formAvg = Number(event.target.avgSale.value);
+
+  let newLocation =  new Store(locationName, formMin, formMax, formAvg);
+
+  storeArray.push(newLocation);
+  newLocation.render();
+
+  tableFooter();
+
+  locationForm.reset();
+}
+
+locationForm.addEventListener('submit', handleSubmit);
 
 // *** CONSTRUCTORS ***
 
@@ -87,10 +109,10 @@ function tableFooter(){
 
   for (let i = 0; i < hours.length; i++){
     let hourlyTotal = 0;
-      for (let j = 0; j < storeArray.length; j++) {
-        hourlyTotal += storeArray[j].cookieSales[i];
-        allLocationSales += hourlyTotal;
-      }
+    for (let j = 0; j < storeArray.length; j++) {
+      hourlyTotal += storeArray[j].cookieSales[i];
+      allLocationSales += hourlyTotal;
+    }
     let hourTotal = document.createElement('td');
     hourTotal.innerText = `${hourlyTotal}`;
     tableFooter.appendChild(hourTotal);
