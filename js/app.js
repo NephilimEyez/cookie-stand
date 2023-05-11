@@ -66,27 +66,24 @@ function tableHeader(){
   let tableHeading = document.createElement('tr');
   sales.appendChild(tableHeading);
 
-  let blankCell = document.createElement('td');
+  let blankCell = document.createElement('th');
   tableHeading.appendChild(blankCell);
 
   for (let i = 0; i < hours.length; i++){
-    let tableHeader = document.createElement('td');
+    let tableHeader = document.createElement('th');
     tableHeader.innerText = `${hours[i]}`;
     tableHeading.appendChild(tableHeader);
   }
 
-  let totalSalesCell = document.createElement('td');
+  let totalSalesCell = document.createElement('th');
   totalSalesCell.innerText = 'Daily Location Total';
   tableHeading.appendChild(totalSalesCell);
 }
 
 function tableFooter(){
   let tableFooter = document.createElement('tr');
+  tableFooter.innerText = 'Hourly Totals';
   sales.appendChild(tableFooter);
-
-  let totalFooter = document.createElement('td');
-  totalFooter.innerText = 'Hourly Totals';
-  tableFooter.appendChild(totalFooter);
 
   for (let i = 0; i < hours.length; i++){
     let hourlyTotal = 0;
