@@ -84,7 +84,7 @@ h3 {
 
 aside {
   width: 450px;
-  height: 360px;
+  height: 354px;
   overflow: auto;
 }
 
@@ -104,4 +104,46 @@ button:hover {
 button {
   width: 200px;
   transition: 350ms;
+}
+
+th {
+  font-weight: 600;
+  width: 4vw;
+}
+
+tr {
+  height: 2vw;
+  text-align: center;
+}
+
+td {
+  border: 2px solid gray;
+  padding-top: 3px;
+}
+
+.container {
+  width: 58vw;
+}
+
+form {
+  margin: 2vw;
+  padding: 1vw;
+  border: 1px solid grey;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+legend {
+  font-weight: 600;
+  padding: 1vw;
+}
+label {
+  margin: .2vw;
+}
+input {
+  margin: .3vw;
 }
