@@ -78,12 +78,30 @@ div article {
   flex-direction: column;
 }
 
-div article p {
+h3 {
+  font-weight: 600;
+}
+
+aside {
   width: 450px;
   height: 360px;
+  overflow: auto;
+}
+
+aside>ul {
+  padding: .5vw 0px;
 }
 
 footer {
   background-color: lightgray;
   height: 100px;
+}
+
+button:hover {
+  background-color: aquamarine;
+}
+
+button {
+  width: 200px;
+  transition: 350ms;
 }
