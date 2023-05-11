@@ -23,11 +23,35 @@
   </header>
   <main>
     <table id="sales"></table>
-    <form id="newLocation">
-      <fieldset>
-        <legend>New/Update Location</legend>
-      </fieldset>
-    </form>
+      <divc class="container">
+      <form id="newLocation">
+        <fieldset>
+          <legend>New/Update Location</legend>
+
+          <div class="inputContainer">
+            <label for="locationName">Location: </label>
+            <input type="text" name="locationName" id="locationName">
+          </div>
+
+          <div class="inputContainer">
+            <label for="minCust">Minimum Customers: </label>
+            <input type="text" name="minCust" id="minCust">
+          </div>
+
+          <div class="inputContainer">
+            <label for="maxCust">Maximum Customers: </label>
+            <input type="text" name="maxCust" id="maxCust">
+          </div>
+
+          <div class="inputContainer">
+            <label for="avgSale">Average Sale: </label>
+            <input type="text" name="avgSale" id="avgSale">
+          </div>
+
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </div>
   </main>
 
   <script src="js/app.js"></script>
