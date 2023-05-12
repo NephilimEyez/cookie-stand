@@ -4,7 +4,6 @@
 
 const hours = ['6am', '7am', '8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
 const storeArray = [];
-let allLocationSales = 0;
 let sales = document.getElementById('sales');
 let locationForm = document.getElementById('newLocation');
 
@@ -27,10 +26,6 @@ function handleSubmit(event){
 
   let newLocation =  new Store(locationName, formMin, formMax, formAvg);
 
-  storeArray.push(newLocation);
-
-  // allLocationSales -= need to target last cell before deletion
-
   sales.deleteRow(-1);
 
   newLocation.render();
@@ -50,6 +45,8 @@ function Store(location, minCust, maxCust, avgSale){
   this.maxCust = maxCust;
   this.avgCookie = avgSale;
   this.cookieSales = [];
+
+  storeArray.push(this);
 }
 
 // *** PROTOTYPE FUNCTIONS ***
@@ -103,32 +100,35 @@ function tableHeader(){
 }
 
 function tableFooter(){
+  let absTotal = 0;
   let tableFooter = document.createElement('tr');
   tableFooter.innerText = 'Hourly Totals';
   sales.appendChild(tableFooter);
-
+  let allLocationSales = [];
+  
   for (let i = 0; i < hours.length; i++){
     let hourlyTotal = 0;
     for (let j = 0; j < storeArray.length; j++) {
       hourlyTotal += storeArray[j].cookieSales[i];
-      allLocationSales += hourlyTotal;
     }
     let hourTotal = document.createElement('td');
     hourTotal.innerText = `${hourlyTotal}`;
     tableFooter.appendChild(hourTotal);
+    allLocationSales.push(hourlyTotal);
   }
-
+  for(let i = 0; i < allLocationSales.length; i++){
+    absTotal += allLocationSales[i];
+  }
   let totalSalesFooter = document.createElement('td');
-  totalSalesFooter.innerText = `${allLocationSales}`;
+  totalSalesFooter.innerText = `${absTotal}`;
   tableFooter.appendChild(totalSalesFooter);
 }
+    
 let seattle = new Store('Seattle', 23, 65, 6.3);
 let tokyo = new Store('Tokyo', 3, 24, 1.2);
 let dubai = new Store('Dubai', 11, 38, 3.7);
 let paris = new Store('Paris', 20, 38, 2.3);
 let lima = new Store('Lima', 2, 16, 4.6);
-
-storeArray.push(seattle, tokyo, dubai, paris, lima);
 
 tableHeader();
 renderAll();
