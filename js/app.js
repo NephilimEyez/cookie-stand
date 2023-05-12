@@ -3,10 +3,9 @@
 // *** GLOBALS ***
 
 const hours = ['6am', '7am', '8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
-let sales = document.getElementById('sales');
-let loremIpsum = 'Captain Janeway: Who wanted to muck around in the dirt when you could be studying quantum mechanics\? Seven of Nine: "Impossible" is a word that humans use far too often. James T. Kirk: There seems to be no sign of intelligent life anywhere... Odo: You\'re still disgusting!  Quark: Wouldn\'t have it any other way! The Doctor: You should know I\'m a hologram and can\'t be bent, spindled, or mutilated, so don\'t bother trying.';
 const storeArray = [];
 let allLocationSales = 0;
+let sales = document.getElementById('sales');
 let locationForm = document.getElementById('newLocation');
 
 // *** HELPER FUNCTIONS ***
@@ -29,6 +28,11 @@ function handleSubmit(event){
   let newLocation =  new Store(locationName, formMin, formMax, formAvg);
 
   storeArray.push(newLocation);
+
+  // allLocationSales -= need to target last cell before deletion
+
+  sales.deleteRow(-1);
+
   newLocation.render();
 
   tableFooter();
@@ -64,10 +68,6 @@ Store.prototype.render = function(){
   for (let i = 0; i < this.cookieSales.length; i++){
     totalSales += this.cookieSales[i];
   }
-
-  // let paragraph = document.createElement('p');
-  // paragraph.innerText = loremIpsum;
-  // sales.appendChild(paragraph);
 
   let storeRow = document.createElement('tr');
   storeRow.innerText = `${this.location}`;
