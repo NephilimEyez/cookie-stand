@@ -1,5 +1,6 @@
 
 body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: antiquewhite;
 }
 
@@ -14,6 +15,8 @@ header {
 h2 {
   font-size: 1.8vw;
   font-weight: 600;
+  font-family: 'Dancing Script', cursive;
+  color: crimson;
 }
 
 header nav img {
@@ -79,7 +82,9 @@ div article {
 }
 
 h3 {
+  font-family: 'Dancing Script', cursive;
   font-weight: 600;
+  color: crimson;
 }
 
 aside {
@@ -107,13 +112,25 @@ button {
 }
 
 th {
-  font-weight: 600;
+  font-family: 'Dancing Script', cursive;
+  color: crimson;
   width: 4vw;
 }
 
 tr {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(68, 0, 100);
   height: 2vw;
   text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(250, 232, 70);
+}
+
+
+tr:nth-child(2n+3) {
+  background-color: rgb(179, 161, 0);
 }
 
 td {
@@ -129,6 +146,7 @@ form {
   margin: 2vw;
   padding: 1vw;
   border: 1px solid grey;
+  background-color: aquamarine;
 }
 
 fieldset {

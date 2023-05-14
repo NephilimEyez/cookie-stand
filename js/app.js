@@ -65,13 +65,11 @@ Store.prototype.render = function(){
     totalSales += this.cookieSales[i];
   }
 
-  // let paragraph = document.createElement('p');
-  // paragraph.innerText = loremIpsum;
-  // sales.appendChild(paragraph);
-
   let storeRow = document.createElement('tr');
-  storeRow.innerText = `${this.location}`;
   sales.appendChild(storeRow);
+  let locationName = document.createElement('h3');
+  storeRow.appendChild(locationName);
+  locationName.innerText = `${this.location}`;
 
   for (let i =0; i < hours.length; i++) {
     let tdSales = document.createElement('td');
@@ -104,8 +102,10 @@ function tableHeader(){
 
 function tableFooter(){
   let tableFooter = document.createElement('tr');
-  tableFooter.innerText = 'Hourly Totals';
   sales.appendChild(tableFooter);
+  let footerWords = document.createElement('h3');
+  tableFooter.appendChild(footerWords);
+  footerWords.innerText = 'Hourly Totals';
 
   for (let i = 0; i < hours.length; i++){
     let hourlyTotal = 0;
