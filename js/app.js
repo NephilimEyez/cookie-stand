@@ -3,10 +3,8 @@
 // *** GLOBALS ***
 
 const hours = ['6am', '7am', '8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm'];
-let sales = document.getElementById('sales');
-let loremIpsum = 'Captain Janeway: Who wanted to muck around in the dirt when you could be studying quantum mechanics\? Seven of Nine: "Impossible" is a word that humans use far too often. James T. Kirk: There seems to be no sign of intelligent life anywhere... Odo: You\'re still disgusting!  Quark: Wouldn\'t have it any other way! The Doctor: You should know I\'m a hologram and can\'t be bent, spindled, or mutilated, so don\'t bother trying.';
 const storeArray = [];
-let allLocationSales = 0;
+let sales = document.getElementById('sales');
 let locationForm = document.getElementById('newLocation');
 
 // *** HELPER FUNCTIONS ***
@@ -28,7 +26,8 @@ function handleSubmit(event){
 
   let newLocation =  new Store(locationName, formMin, formMax, formAvg);
 
-  storeArray.push(newLocation);
+  sales.deleteRow(-1);
+
   newLocation.render();
 
   tableFooter();
@@ -46,6 +45,8 @@ function Store(location, minCust, maxCust, avgSale){
   this.maxCust = maxCust;
   this.avgCookie = avgSale;
   this.cookieSales = [];
+
+  storeArray.push(this);
 }
 
 // *** PROTOTYPE FUNCTIONS ***
@@ -122,13 +123,12 @@ function tableFooter(){
   totalSalesFooter.innerText = `${allLocationSales}`;
   tableFooter.appendChild(totalSalesFooter);
 }
+    
 let seattle = new Store('Seattle', 23, 65, 6.3);
 let tokyo = new Store('Tokyo', 3, 24, 1.2);
 let dubai = new Store('Dubai', 11, 38, 3.7);
 let paris = new Store('Paris', 20, 38, 2.3);
 let lima = new Store('Lima', 2, 16, 4.6);
-
-storeArray.push(seattle, tokyo, dubai, paris, lima);
 
 tableHeader();
 renderAll();
