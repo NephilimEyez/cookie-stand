@@ -67,8 +67,10 @@ Store.prototype.render = function(){
   }
 
   let storeRow = document.createElement('tr');
-  storeRow.innerText = `${this.location}`;
   sales.appendChild(storeRow);
+  let locationName = document.createElement('h3');
+  storeRow.appendChild(locationName);
+  locationName.innerText = `${this.location}`;
 
   for (let i =0; i < hours.length; i++) {
     let tdSales = document.createElement('td');
@@ -100,27 +102,25 @@ function tableHeader(){
 }
 
 function tableFooter(){
-  let absTotal = 0;
   let tableFooter = document.createElement('tr');
-  tableFooter.innerText = 'Hourly Totals';
   sales.appendChild(tableFooter);
-  let allLocationSales = [];
-  
+  let footerWords = document.createElement('h3');
+  tableFooter.appendChild(footerWords);
+  footerWords.innerText = 'Hourly Totals';
+
   for (let i = 0; i < hours.length; i++){
     let hourlyTotal = 0;
     for (let j = 0; j < storeArray.length; j++) {
       hourlyTotal += storeArray[j].cookieSales[i];
+      allLocationSales += hourlyTotal;
     }
     let hourTotal = document.createElement('td');
     hourTotal.innerText = `${hourlyTotal}`;
     tableFooter.appendChild(hourTotal);
-    allLocationSales.push(hourlyTotal);
   }
-  for(let i = 0; i < allLocationSales.length; i++){
-    absTotal += allLocationSales[i];
-  }
+
   let totalSalesFooter = document.createElement('td');
-  totalSalesFooter.innerText = `${absTotal}`;
+  totalSalesFooter.innerText = `${allLocationSales}`;
   tableFooter.appendChild(totalSalesFooter);
 }
     
